@@ -1,8 +1,45 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import "../styles/global.css";
+
+const pageTitle: string = "About Me";
+
+const skills: string[] = ["Go", "Typescript", "React"];
+
+const skillColor: string = "crimson";
+---
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{pageTitle}</title>
+        <style define:vars={skillColor}>
+            h1 {
+                color: royalblue;
+                font-size: 4rem;
+            }
+
+            .skill {
+                color: var(--skillColor);
+                font-weight: bold;
+            }
+        </style>
+    </head>
+</html>
+
 <body>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
+    <Header />
     <h1>About Me</h1>
     <h2>first time building with Astro</h2>
+    <p>Skills</p>
+    <ul>
+        {skills.map((s) => (
+            <li class="skill">{s}</li>
+        ))}
+    </ul>
 
     <p>A start of a new good stuff!</p>
+    <Footer />
 </body>
